@@ -17,8 +17,7 @@ function motorFormulario() {
         while ((pax < 1) || (pax > 10)) {
         pax = +prompt('Ingrese Solamente de 1 a 10');
         }
-    } while ((pax < 1) || (pax > 10Bob
-        ));
+    } while ((pax < 1) || (pax > 10));
 }
 
 function motorCotizador() {
