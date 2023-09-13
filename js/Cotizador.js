@@ -2,10 +2,28 @@
 //Es el cotizador tomando en cuenta zonas
 
 let nombreCliente;
+let apellidoCliente;
+let correoCliente;
+let telefonoCliente;
 let destino;
 let pax;
+let precio;
 let total;
-let ticket; 
+let ticket;
+let nextStep;
+
+const destinoPrecio = {
+    Cancun: 15,
+    PDC: 25,
+    Tulum: 35
+}
+
+const datosCliente = {
+    nombreCliente: '',
+    apellidoCliente: '',
+    correoCliente: '',
+    telefonoCliente: ''
+}
 
 function motorFormulario() {
     do {
@@ -20,23 +38,47 @@ function motorFormulario() {
     } while ((pax < 1) || (pax > 10));
 }
 
-function motorCotizador() {
-    if (destino == 'Cancun') {
-        return total = 15 * pax;
-    } else if (destino == 'PDC') {
-        return total = 25 * pax;
-    } else {
-        return total = 35 * pax;
-    }
+function motorCotizador(destino, pax) {
+    return total = pax * destinoPrecio[destino];
+}
+
+function controlCotizador() {
+    do {
+        nextStep = prompt (`¡Hola!, el precio por el transporte a ${destino} para ${pax} personas, es de $ ${total} USD. \n ¿Desea continuar con la reserva? Contesta si o no`);
+        while ((nextStep != 'si') && (nextStep != 'no')) {
+            nextStep = prompt ('Conteste si o no');
+        }
+    } while ((nextStep != 'si') && (nextStep != 'no'));
+}
+
+function carritoCotizador() {
+    datosCliente.nombreCliente = prompt ('Empecemos la reserva, Ingrese su nombre: ');
+    datosCliente.apellidoCliente = prompt ('Ingrese su apellido: ');
+    datosCliente.correoCliente = prompt ('Su correo electrónico: ');
+    datosCliente.telefonoCliente = prompt ('Teléfono: ');
+}
+
+function checkoutConfirmation() {
+
 }
 
 
-nombreCliente = prompt ('Bienvenido al Cotizador de transporte \n Ingrese su nombre: ');
-
+alert ('Bienvenido al Cotizador de transporte');
 motorFormulario();
-motorCotizador();
+motorCotizador(destino, pax);
+console.log (`El total es ${total}`);
 
-alert ('Hola ' + nombreCliente + ', el precio por el transporte a ' + destino + ' para ' + pax + ' personas, es de $' + total + '\n Te pediría datos para confirmar pero estoy al límite :)');
+controlCotizador();
+
+if (nextStep == 'no') {
+    alert ('Pues bye');
+    location.reload(true);
+} else {
+    carritoCotizador();
+    alert (`Su transporte a ${destino} para ${pax} personas está reservado a nombre de ${datosCliente.nombreCliente} ${datosCliente.apellidoCliente} , y se ha enviado al correo ${datosCliente.correoCliente}. Recuerde su pago de ${total} USD.`);
+}
+
+
 
 /*do {
     destino = prompt('Ingrese su destino: Cancun, PDC o Tulum');
