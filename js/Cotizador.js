@@ -14,10 +14,11 @@ function motorFormulario() {
             destino = prompt('Ingrese BIEN su destino: Cancun, PDC o Tulum');
         }
         pax = +prompt ('¿Cuántas personas nos acompañan? 1 a 10');
-        while ((pax < 1) && (pax > 11)) {
+        while ((pax < 1) || (pax > 10)) {
         pax = +prompt('Ingrese Solamente de 1 a 10');
         }
-    } while ((pax < 1) && (pax > 11));
+    } while ((pax < 1) || (pax > 10Bob
+        ));
 }
 
 function motorCotizador() {
