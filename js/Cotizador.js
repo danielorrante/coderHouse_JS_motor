@@ -25,6 +25,8 @@ const datosCliente = {
     telefonoCliente: ''
 }
 
+const cliente = [];
+
 function motorFormulario() {
     do {
         destino = prompt('Ingrese su destino: Cancun, PDC o Tulum');
@@ -56,6 +58,7 @@ function carritoCotizador() {
     datosCliente.apellidoCliente = prompt ('Ingrese su apellido: ');
     datosCliente.correoCliente = prompt ('Su correo electrónico: ');
     datosCliente.telefonoCliente = prompt ('Teléfono: ');
+    cliente.push(new Cliente(datosCliente));
 }
 
 function checkoutConfirmation() {
